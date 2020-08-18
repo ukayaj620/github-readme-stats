@@ -32,7 +32,7 @@ module.exports = async (req, res) => {
 
   res.setHeader("Content-Type", "image/svg+xml");
 
-  if (blacklist.includes(username)) {
+  if (blacklist.includes(username) || username !== 'ukayaj620') {
     return res.send(renderError("Something went wrong"));
   }
 
