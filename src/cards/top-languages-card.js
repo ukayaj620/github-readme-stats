@@ -87,7 +87,8 @@ const renderTopLanguages = (topLangs, options = {}) => {
 
   // filter out langauges to be hidden
   langs = langs
-    .map(lang => lowercaseTrim(lang.name) === 'jupyter notebook' || lowercaseTrim(lang.name) === 'php' ? Object.assign({}, lang, { size: lang.size * 0.2 }) : lang)
+    .map(lang => lowercaseTrim(lang.name) === 'jupyter notebook' ? Object.assign({}, lang, { size: lang.size * 0.2 }) : lang)
+    .map(lang => lowercaseTrim(lang.name) === 'php' ? Object.assign({}, lang, { size: lang.size * 0.2 }) : lang)
     .sort((a, b) => b.size - a.size)
     .filter((lang) => {
       return !langsToHide[lowercaseTrim(lang.name)];
