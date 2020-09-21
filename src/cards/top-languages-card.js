@@ -87,7 +87,7 @@ const renderTopLanguages = (topLangs, options = {}) => {
 
   // filter out langauges to be hidden
   langs = langs
-    .map(lang => lowercaseTrim(lang.name) === 'jupyter notebook' ? Object.assign({}, lang, { size: lang.size * 0.2 }) : lang)
+    .map(lang => lowercaseTrim(lang.name) === 'jupyter notebook' || lowercaseTrim(lang.name) === 'php' ? Object.assign({}, lang, { size: lang.size * 0.2 }) : lang)
     .sort((a, b) => b.size - a.size)
     .filter((lang) => {
       return !langsToHide[lowercaseTrim(lang.name)];
@@ -163,7 +163,7 @@ const renderTopLanguages = (topLangs, options = {}) => {
       items: langs.map((lang) => {
         return createProgressNode({
           width: width,
-          name: lowercaseTrim(lang.name) === 'jupyter notebook' ? `${lang.name} (scaled down by 80%)` : lang.name,
+          name: lowercaseTrim(lang.name) === 'jupyter notebook' || lowercaseTrim(lang.name) === 'php' ? `${lang.name} (scaled down by 80%)` : lang.name,
           color: lang.color || "#858585",
           progress: ((lang.size / totalLanguageSize) * 100).toFixed(2),
         });
